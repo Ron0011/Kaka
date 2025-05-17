@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Orders | PetPal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/profile.css' %}">
+</head>
+<body>
+
+<section class="order-history-section">
+  <h1>My Orders</h1>
+
+  {% if orders %}
+    <table style="width:100%; text-align:center;">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+        <tr>
+          <td>{{ order.id }}</td>
+          <td>{{ order.product_name }}</td>
+          <td>{{ order.quantity }}</td>
+          <td>
+            {% if order.status == "Paid" %}
+              <span style="color:green;">Paid</span>
+            {% elif order.status == "Shipped" %}
+              <span style="color:orange;">Shipped</span>
+            {% elif order.status == "Delivered" %}
+              <span style="color:blue;">Delivered</span>
+            {% else %}
+              <span style="color:red;">Pending</span>
+            {% endif %}
+          </td>
+          <td>{{ order.order_date|date:"d M Y" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No orders found.</p>
+  {% endif %}
+</section>
+
+</body>
+</html>

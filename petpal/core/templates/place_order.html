@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Place Order | PetPal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/petstore.css' %}">
+</head>
+<body>
+
+<section class="order-form-section">
+    <h1>Order: {{ product_name }}</h1>
+
+    <form method="POST" class="order-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Place Order</button>
+    </form>
+
+    <a href="{% url 'petstore' %}" style="display:block; margin-top:20px; text-align:center;">← Back to Pet Store</a>
+</section>
+
+</body>
+</html>

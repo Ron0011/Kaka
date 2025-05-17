@@ -1,0 +1,99 @@
+/* admin.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:aliceblue;
+    color: #333;
+}
+
+header {
+    background-color: cadetblue ;
+    color:aliceblue;
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav {
+    margin-top: 10px;
+}
+
+header nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+.dashboard-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin: 0;
+    color: #363635;
+}
+
+.card p {
+    font-size: 24px;
+    margin: 10px 0 0;
+    font-weight: bold;
+    color: #ff6347;
+}
+
+.latest-activities {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.latest-activities h2 {
+    color: #363635;
+}
+
+.latest-activities ul {
+    list-style: none;
+    padding: 0;
+}
+
+.latest-activities ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    color: #555;
+}
+
+footer {
+    background: #363635;
+    text-align: center;
+    padding: 15px;
+    color: #ccc;
+    margin-top: 40px;
+}

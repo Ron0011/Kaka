@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart | PetPal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/petstore.css' %}">
+</head>
+<body>
+
+<section class="cart-section">
+    <h1>Your Shopping Cart</h1>
+
+    {% if cart_items %}
+    <table style="width:100%; text-align:center;">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price (Each)</th>
+          <th>Total</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart_items %}
+        <tr>
+          <td>{{ item.product_name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>${{ item.price }}</td>
+          <td>${{ item.item_total }}</td>
+          <td><a href="{% url 'remove_from_cart' product_name=item.product_name %}" style="color:red;">Remove</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h3 style="text-align:right; margin-top:20px;">Total: ${{ total_price }}</h3>
+
+    <div style="text-align:center; margin-top:30px;">
+      <a href="{% url 'checkout' %}" class="btn-checkout">Proceed to Checkout</a>
+    </div>
+
+    {% else %}
+    <p>Your cart is empty.</p>
+    {% endif %}
+    
+    <div style="margin-top:20px;">
+      <a href="{% url 'petstore' %}">← Continue Shopping</a>
+    </div>
+</section>
+
+</body>
+</html>

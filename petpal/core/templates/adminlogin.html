@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login | PetPal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/adminlogin.css' %}">
+</head>
+<body>
+
+<section class="login-section">
+    <h1>Admin Login</h1>
+
+    <form action="{% url 'adminlogin' %}" method="POST" class="admin-login-form">
+        {% csrf_token %}
+
+        {% if messages %}
+            {% for message in messages %}
+                <p class="error">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <input type="text" name="username" placeholder="Username" required>
+
+        <div class="password-container">
+            <input type="password" name="password" id="password-field" placeholder="Password" required>
+        </div>
+
+        <button type="submit">Login</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2025 PetPal Admin. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

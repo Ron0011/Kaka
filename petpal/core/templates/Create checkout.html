@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout | PetPal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/petstore.css' %}">
+</head>
+<body>
+
+<section class="checkout-section">
+    <h1>Checkout</h1>
+
+    <form method="POST" class="checkout-form">
+        {% csrf_token %}
+        <input type="text" name="customer_name" placeholder="Full Name" required>
+        <input type="text" name="customer_phone" placeholder="Phone Number" required>
+        <textarea name="customer_address" placeholder="Shipping Address" required></textarea>
+
+        <button type="submit">Place Order</button>
+    </form>
+
+    <a href="{% url 'view_cart' %}">← Back to Cart</a>
+</section>
+
+</body>
+</html>

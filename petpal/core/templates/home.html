@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetPal - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
+  <style>
+    .close-btn:hover {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1 class="logo">PETPAL</h1>
+  <nav>
+    <ul>
+      <li><a href="{% url 'home' %}" class="btn">Home</a></li>
+      <li><a href="{% url 'adopt' %}" class="btn">Adopt</a></li>
+      <li><a href="{% url 'VeterinaryHospital' %}" class="btn">Vet</a></li>
+      <li><a href="{% url 'petstore' %}" class="btn">Pet Store</a></li>
+<a href="{% url 'profile' %}" style="text-decoration: none;">
+    <div style="width: 40px; 
+    height: 40px;  
+    color: white; 
+    border-radius: 50%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-weight: bold;">
+      {{ user.username|first|upper }}
+    </div>
+  </a>
+      {% if user.is_authenticated %}
+      <li style="display: flex; align-items: center; gap: 10px;">
+        <!-- Logout Button -->
+        <a href="{% url 'logout' %}" class="btn" style="background-color:rgb(7, 74, 76);">Logout</a>
+      </li>
+      {% else %}
+      <li><a href="{% url 'adminlogin' %}" class="btn">Admin</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</header>
+    <main>
+        <section>
+            <img src="{% static 'core/images/a24645fe.jpg' %}" alt="pet-love" width="150">
+            <div>
+                <h2>Welcome to PetPal! Your ultimate pet adoption & care platform.</h2>
+                <p>At PetPal, we are dedicated to creating a world filled with love and care for pets.
+                    We bring everything together in one place for you.</p>
+            </div>
+        </section>
+        <!-- Success Message with Close Button -->
+{% if messages %}
+<div style="position: relative; 
+            margin: 20px auto; 
+            width: 400px; 
+            padding: 15px; 
+            background-color: #d4edda; 
+            color: #155724; 
+            text-align: center; 
+            font-weight: bold; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+  {% for message in messages %}
+    {{ message }}
+  {% endfor %}
+  <a href="{% url 'home' %}" class="close-btn" style="position: absolute; 
+                                                      top: 5px; 
+                                                      right: 10px; 
+                                                      text-decoration: none; 
+                                                      color: #155724; font-size: 20px;">&times;</a>
+</div>
+{% endif %}
+        <section1 style="display: flex; justify-content: center; gap: 20px; margin: 40px 0;">
+            <a href="{% url 'register' %}" style="
+                padding: 12px 28px;
+                font-size: 1rem;
+                font-weight: 600;
+                border: none;
+                border-radius: 30px;
+                text-decoration: none;
+                background: linear-gradient(135deg, #363635, #7e7d7c);
+                color: #fff;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            " 
+            onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 20px rgba(0, 0, 0, 0.2)';" 
+            onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)';">
+                Register
+            </a>
+            
+            <a href="{% url 'login' %}" style="
+                padding: 12px 28px;
+                font-size: 1rem;
+                font-weight: 600;
+                border: none;
+                border-radius: 30px;
+                text-decoration: none;
+                background: linear-gradient(135deg, #363635, #7e7d7c);
+                color: #fff;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            " 
+            onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 20px rgba(0, 0, 0, 0.2)';" 
+            onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 10px rgba(0, 0, 0, 0.1)';">
+                Login
+            </a>
+        </section1>
+        <section>
+            <img src="{% static 'core/images/25632080.jpg' %}" alt="Adopt a Pet" width="150">
+            <div>
+                <h2>Don't Shop, Adopt!</h2>
+                <p>Browse our adoption portal to find your perfect companion.</p>
+                <p>Dogs,cats,birds and etc....</p>
+            </div>    
+        </section>
+    </main>
+    <picture>    
+        <img src="{% static 'core/images/pexels-blue-bird-7210349.jpg' %}" alt="pet with owner" width="1000" height="880">
+    </picture>
+    <h1>Why Choose PetPal?</h1>
+    <h3>Because we enable direct pet adoption, from one good home to another.</h3>
+    <section>    
+        <img src="{% static 'core/images/17876741ap2.jpg' %}" alt="AdoptPet" width="150">
+        <div>
+            <h2>Find & Adopt Your Dream Pet</h2>
+            <p>Every pet deserves a loving home. 
+                Our adoption portal connects you with a variety of pets from different shelters and rescue centers. 
+                Use advanced search filters to find the perfect pet based on breed, age, and location. 
+                Each pet profile includes personality traits, health status, and adoption requirements, making it easy to make an informed decision.</p>
+        </div>
+    </section>
+    <section>
+        <img src="{% static 'core/images/vet.jpg' %}" alt="Veterinary" width="150">
+        <div>
+            <h2>Book Veterinary Appointments</h2>
+            <p>Your pet’s health is our priority. 
+                 With PetPal, you can schedule vet consultations with experienced professionals in your area. 
+                 Whether it’s a routine check-up, vaccinations, or emergency care, you can book appointments effortlessly. 
+                 You can also manage medical records, set reminders for vet visits, and consult veterinarians online for minor concerns.</p>
+        </div>
+    </section>
+    <section>
+        <img src="{% static 'core/images/pet-shop.jpg' %}" alt="pet-shop" width="150">
+        <div>
+            <h2>Online Pet Stores</h2>
+            <p>Get high-quality pet food, toys, accessories, and grooming products from our online store. 
+                 We offer a hassle-free shopping experience , exclusive discounts, and subscription plans for regular pet needs.</p>
+       </div>
+    </section>
+    <footer>
+        <div>
+            <h2>About PetPal</h2>
+            <p>PetPal is more than just a platform; it’s a mission to create a world where every pet finds a loving home and receives the best care. Whether you’re looking to adopt, shop, or connect with a community of pet lovers, PetPal makes pet parenting easy and fulfilling.</p>
+        </div>
+        <div>
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Adopt a Pet</a></li>
+                <li><a href="#">Vet Services</a></li>
+                <li><a href="#">Pet Store</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <h3>Follow Us</h3>
+                <a href="#"><i class="bi bi-facebook me-2"></i></a>
+                <a href="#"><i class="bi bi-twitter me-2"></i></a>
+                <a href="#"><i class="bi bi-linkedin me-2"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+            </div>
+        <div>
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:petpal@gmail.com">petpal@gmail.com</a></p>
+            <p>Phone: +1 (123) 456-7890</p>
+        </div>
+        <p>© 2025 PetPal. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

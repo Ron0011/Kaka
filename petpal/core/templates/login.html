@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetPal - Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'core/css/login.css' %}">
+</head>
+<body>
+
+<div class="login-container">
+  <h2>Login to PetPal</h2>
+
+  <!-- Success/Error Messages -->
+  {% if messages %}
+    {% for message in messages %}
+      <div class="{% if message.tags == 'success' %}success-message{% elif message.tags == 'error' %}error-message{% endif %}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <!-- Login Form -->
+  <form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" class="form-control" placeholder="Enter your username" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+    </div>
+
+    <!-- Show Password Checkbox -->
+    <div class="form-group" style="margin-top:10px;">
+      <input type="checkbox" onclick="password.type = password.type === 'password' ? 'text' : 'password'">
+      <label>Show Password</label>
+    </div>
+
+    <button type="submit" class="btn-login">Login</button>
+  </form>
+
+  <p class="signup-text">Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 PetPal. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

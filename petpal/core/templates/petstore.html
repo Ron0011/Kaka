@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Store</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/petstore.css' %}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <h1 class="logo">PETPAL</h1>
+        </nav>    
+    </header>
+
+    <main class="main-content">
+        <h1 class="title">Pet Store</h1>
+
+        <div class="controls">
+            <select id="categoryFilter" class="filter-select">
+                <option value="All">All</option>
+                <option value="Food">Food</option>
+                <option value="Toys">Toys</option>
+                <option value="Accessories">Accessories</option>
+            </select>
+            
+            <select id="priceSort" class="filter-select">
+                <option value="none">Sort by Price</option>
+                <option value="asc">Low to High</option>
+                <option value="desc">High to Low</option>
+            </select>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="{% static 'core/images/dog treats.jpg' %}" alt="Dog Food" width="250" height="350">
+                <h2>Pet botanics Training Reward bacon-Flavored Dog Treats</h2>
+                <p>&#8377; 1099</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Pet botanics Training Reward bacon-Flavored Dog Treats' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Pet botanics Training Reward bacon-Flavored Dog Treats' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/cat treats.jpg' %}" alt="Cat Toy" width="250" height="350">
+                <h2>Shamless Pets Cat Treats</h2>
+                <p>&#8377; 1199</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Shamless Pets Cat Treats' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Shamless Pets Cat Treats' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/dog food.jpg' %}" alt="Pet Bed" width="250" height="350">
+                <h2>Pedigree</h2>
+                <p>&#8377; 300</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Pedigree' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Pedigree' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/dog collar belt.jpg' %}" alt="Dog Leash" width="250" height="350">
+                <h2>Dog Collar Belt</h2>
+                <p>&#8377; 150</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Dog Collar Belt' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Dog Collar Belt' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/dog belt&rope.jpg' %}" alt="Dog Leash" width="250" height="350">
+                <h2>Dog Belt And Rope Combo</h2>
+                <p>&#8377; 499</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Dog Belt And Rope Combo' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Dog Belt And Rope Combo' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/poly body blet.jpg' %}" alt="Dog Leash" width="250" height="350">
+                <h2>Poly Body Belt</h2>
+                <p>&#8377; 560</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Poly Body Belt' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Poly Body Belt' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/wild one harness.jpeg' %}" alt="Dog Leash" width="250" height="350">
+                <h2>Wild One Harness</h2>
+                <p>&#8377; 2500</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Wild One Harness' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Wild One Harness' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/bed.jpeg' %}" alt="Pet Bed" width="250" height="350">
+                <h2>Frisco Rectangular Bolster Cat & Dog Bed</h2>
+                <p>&#8377; 2410</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Frisco Rectangular Bolster Cat & Dog Bed' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Frisco Rectangular Bolster Cat & Dog Bed' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/bed2.jpg' %}" alt="Pet Bed" width="250" height="350">
+                <h2>Nandog Pet Gear Pineapple Bed</h2>
+                <p>&#8377; 4500</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Nandog Pet Gear Pineapple Bed' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Nandog Pet Gear Pineapple Bed' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/travel carrier.jpeg' %}" alt="Pet Bed" width="250" height="350">
+                <h2>Wild One Travel Carrier</h2>
+                <p>&#8377; 6480</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Wild One Travel Carrier' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Wild One Travel Carrier' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/pet carrier.jpg' %}" alt="Pet Bed" width="250" height="350">
+                <h2>Sherpa Original Deluxe Pet Carrier</h2>
+                <p>&#8377; 2399</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Sherpa Original Deluxe Pet Carrier' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Sherpa Original Deluxe Pet Carrier' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/crate.jpg' %}" alt="Pet Bed" width="250" height="350">
+                <h2>Kindtail Pawd Collapsible Dog & Cat Crate</h2>
+                <p>&#8377; 7100</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Kindtail Pawd Collapsible Dog & Cat Crate' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Kindtail Pawd Collapsible Dog & Cat Crate' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/cat scratcher.jpg' %}" alt="Pet Bed" width="250" height="350">
+                <h2>Necoichi Cozy Tower Cat Scratcher</h2>
+                <p>&#8377; 4499</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Necoichi Cozy Tower Cat Scratcher' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Necoichi Cozy Tower Cat Scratcher' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/bathtub.jpg' %}" alt="Pet Bed" width="250" height="350">
+                <h2>Automatic Bathtub Bird Parrot Shower</h2>
+                <p>&#8377; 799</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Automatic Bathtub Bird Parrot Shower' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Automatic Bathtub Bird Parrot Shower' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/pet_bar.png' %}" alt="Pet Bed" width="250" height="350">
+                <h2>Pet Bar</h2>
+                <p>&#8377; 399</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Pet Bar' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Pet Bar' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/Pet-Cleaner-Eye-Cleaner-Pannatural-Pets.jpg' %}" alt="Pet Bed" width="250" height="350">
+                <h2>Pets Eye Cleaner</h2>
+                <p>&#8377; 219</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Pets Eye Cleaner' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Pets Eye Cleaner' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/PET-SHAMPOO-CONDITIONER.jpg' %}" alt="Pet Bed" width="250" height="350">
+                <h2>Herbal Pet Shampoo & Conditioner</h2>
+                <p>&#8377; 600</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Herbal Pet Shampoo & Conditioner' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Herbal Pet Shampoo & Conditioner' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/ProbioticPaste.png' %}" alt="Pet Bed" width="250" height="350">
+                <h2>Probiotic Paste</h2>
+                <p>&#8377; 150</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Probiotic Paste' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Probiotic Paste' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/S-Cleaners.png' %}" alt="Pet Bed" width="250" height="350">
+                <h2>Breath Freshener</h2>
+                <p>&#8377; 2799</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Breath Freshener' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Breath Freshener' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="{% static 'core/images/skitter.jpg' %}" alt="Pet Bed" width="250" height="350">
+                <h2>Skitter</h2>
+                <p>&#8377; 149</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Skitter' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Skitter' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div> 
+            <div class="product-card">
+                <img src="{% static 'core/images/teblets.png' %}" alt="Pet Bed" width="250" height="350">
+                <h2>Joint Care Supplement</h2>
+                <p>&#8377; 499</p>
+                <div class="button-group">
+                    <a href="{% url 'place_order' product_name='Joint Care Supplement' %}" class="order-btn">Order</a>
+                    <a href="{% url 'add_to_cart' product_name='Joint Care Supplement' %}" class="cart-btn">Add to Cart</a>
+                </div>
+            </div>            
+        </div>
+    </main>
+    <form method="post" style="max-width: 500px; margin: 30px auto; padding: 20px; display: flex; flex-direction: column; gap: 15px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="padding: 12px; background: #363635; color: white; border: none; border-radius: 30px;">Place Order</button>
+      </form>
+      
+      <a href="{% url 'profile' %}" style="display: block; text-align: center; margin-top: 20px;">← Back to Profile</a>
+</body>
+</html>

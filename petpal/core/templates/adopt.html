@@ -1,0 +1,75 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt a Pet</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/adopt.css' %}">
+</head>
+<body>
+    <header>
+        <h1 class="logo">PETPAL</h1>
+        <nav>
+            <a href="{% url 'adopt' %}" class="btn">Adopt</a>
+        </nav>
+    </header> 
+    <section class="adopt-section">
+        <ul>
+            <li><a href="#dogs" class="btn">Dogs</a></li>
+            <li><a href="#cats" class="btn">Cats</a></li>
+            <li><a href="#birds" class="btn">Birds</a></li>
+            <li><a href="#other animals" class="btn">Other Animals</a></li>
+        </ul>
+    </section>
+    <section>
+        <h1>Available Pets for Adoption</h1>
+        <div class="pets-list">
+            {% for pet in pets %}
+            <div class="pet-card">
+                <img src="{{ pet.image.url }}" alt="{{ pet.name }} photo">
+                <h3>{{ pet.name }}</h3>
+                <p>Breed: {{ pet.breed }}</p>
+                <p>Age: {{ pet.age }}</p>
+    
+                {% if not pet.is_adopted %}
+                <form action="{% url 'adopt_pet' pet.id %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" class="adopt-btn">Adopt</button>
+                </form>
+                {% else %}
+                <p class="adopted-text">Already Adopted</p>
+                {% endif %}
+    
+                {% if pet.user == request.user %}
+                <!-- Only show delete button for the pet owner -->
+                <form action="{% url 'delete_pet' pet.id %}" method="POST" style="margin-top: 10px;">
+                    {% csrf_token %}
+                    <button type="submit" class="remove-btn">Remove</button>
+                </form>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    
+    <!-- Add New Pet -->
+    <section class="add-pet-section">
+        <h2>Add Your Pet for Adoption</h2>
+    
+        <form action="{% url 'add_pet' %}" method="POST" enctype="multipart/form-data" class="add-pet-form">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Pet Name" required>
+            <input type="text" name="breed" placeholder="Pet Breed" required>
+            <input type="text" name="age" placeholder="Pet Age" required>
+            <input type="file" name="image" required>
+            <button type="submit">Add Pet</button>
+        </form>
+    </section>
+    <footer>
+        
+        </div>
+        <p>© 2025 PetPal. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

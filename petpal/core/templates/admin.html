@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard | PetPal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/admin.css' %}">
+</head>
+<body>
+
+<header>
+    <h1>PetPal Admin Dashboard</h1>
+    <nav>
+        <a href="{% url 'admin_logout' %}">Logout</a>
+    </nav>
+</header>
+
+<main>
+    <section class="dashboard-cards">
+        <div class="card">
+            <h3>Total Users</h3>
+            <p>{{ total_users }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Pets</h3>
+            <p>{{ total_pets }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Orders</h3>
+            <p>{{ total_orders }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Vet Bookings</h3>
+            <p>{{ total_vet_appointments }}</p>
+        </div>
+    </section>
+
+    <section class="latest-activities">
+        <h2>Recent Adoptions</h2>
+        <ul>
+            {% for adoption in adoption_requests %}
+                <li>{{ adoption.user.username }} adopted {{ adoption.pet.name }} on {{ adoption.adopted_at|date:"d M Y" }}</li>
+            {% empty %}
+                <li>No recent adoptions.</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Recent Vet Appointments</h2>
+        <ul>
+          {% for booking in vet_appointments %}
+            <li>
+              {{ booking.user.username }} booked {{ booking.pet.name }} at {{ booking.hospital.name }} on {{ booking.date|date:"d M Y" }} -
+              <strong>Status:</strong> {{ booking.status }}
+        
+              <form method="POST" action="{% url 'admin_dashboard' %}" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                <select name="status" required>
+                  <option value="">Change Status</option>
+                  <option value="Confirmed">Confirm</option>
+                  <option value="Cancelled">Cancel</option>
+                </select>
+                <button type="submit">Update</button>
+              </form>
+            </li>
+          {% empty %}
+            <li>No recent bookings.</li>
+          {% endfor %}
+        </ul>
+        
+    </section>
+</main>
+
+<footer>
+    <p>© 2025 PetPal Admin. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

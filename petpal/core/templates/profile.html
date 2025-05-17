@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile | PetPal</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'core/css/profile.css' %}">
+</head>
+<body>
+
+<header>
+  <h1>Welcome, {{ user.username|capfirst }}</h1>
+  <nav>
+    <a href="{% url 'home' %}">Home</a> |
+    <a href="{% url 'logout' %}">Logout</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Notifications -->
+  <section class="profile-section">
+    <h2>Notifications</h2>
+    {% if notifications %}
+      <ul>
+        {% for note in notifications %}
+          <li>{{ note.message }} - {{ note.created_at|date:"d M Y" }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No notifications yet.</p>
+    {% endif %}
+  </section>
+
+  <!-- Pets Added -->
+  <section class="profile-section">
+    <h2>Pets You Added</h2>
+    {% if pets_added %}
+      <ul>
+        {% for pet in pets_added %}
+          <li>{{ pet.name }} - {{ pet.breed }} (Age: {{ pet.age }})</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No pets added yet.</p>
+    {% endif %}
+  </section>
+
+  <!-- Adoptions -->
+  <section class="profile-section">
+    <h2>Pets You Adopted</h2>
+    {% if adoptions %}
+      <ul>
+        {% for adoption in adoptions %}
+          <li>{{ adoption.pet.name }} - Adopted on {{ adoption.adopted_at|date:"d M Y" }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No adoptions yet.</p>
+    {% endif %}
+  </section>
+
+  <!-- Vet Appointments -->
+  <section class="profile-section">
+    <h2>Vet Appointments</h2>
+    {% if vet_bookings %}
+      <ul>
+        {% for booking in vet_bookings %}
+          <li>
+            🏥 {{ booking.pet.name }} - {{ booking.hospital.name }} on {{ booking.date|date:"d M Y" }} at {{ booking.time|time:"H:i" }}
+            <span class="status 
+              {% if booking.status == 'Confirmed' %} confirmed
+              {% elif booking.status == 'Cancelled' %} cancelled
+              {% else %} pending
+              {% endif %}
+            ">
+              ({{ booking.status }})
+            </span>
+
+            {% if booking.status == "Pending" %}
+            <form action="{% url 'cancel_vet_booking' booking.id %}" method="POST" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" class="cancel-btn">Cancel</button>
+            </form>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No vet appointments yet.</p>
+    {% endif %}
+  </section>
+
+  <!-- Orders -->
+  <section class="profile-section">
+    <h2>Pet Store Orders</h2>
+    {% if Orders %}
+      <ul>
+        {% for order in orders %}
+          <li>{{ order.product_name }} - Quantity: {{ order.quantity }} - Ordered on {{ order.order_date|date:"d M Y" }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No orders placed yet.</p>
+    {% endif %}
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2025 PetPal. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

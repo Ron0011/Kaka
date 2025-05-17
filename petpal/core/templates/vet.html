@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vet Services | PetPal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/vet.css' %}">
+</head>
+<body>
+
+<header>
+    <h1 class="logo">PETPAL</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'VeterinaryHospital' %}">Vet</a></li>
+        </ul>
+    </nav>
+</header>
+<section>
+    <h2>Veterinary Hospitals</h2>
+<picture>
+    <img src="{% static 'core/images/Veterinarian Aesthetic.jpeg' %}" alt="pet with owner" width="700" height="500" style= "margin: 2px;
+        padding: 5px;">
+    <img src="{% static 'core/images/pexels-paul-groom-.jpg' %}" alt="pet with owner" width="400" height="500" style="margin: 2px; padding: 5px;">    
+    <img src="{% static 'core/images/cat vet.webp' %}" alt="pet with owner" width="500" height="500" style="margin: 2px; padding: 5px;">
+</picture>
+
+
+    <div class="hospital-list">
+        {% for hospital in hospitals %}
+        <div class="hospital-card">
+            <h3>{{ hospital.name }}</h3>
+            <p>{{ hospital.location }}</p>
+            <p>Contact: {{ hospital.contact_number }}</p>
+            <a href="{% url 'book_vet_appointment' hospital.id %}" class="btn">Book Appointment</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 PetPal. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

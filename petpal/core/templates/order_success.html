@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You | PetPal</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'core/css/petstore.css' %}">
+</head>
+<body>
+
+<section class="success-section">
+  <h1>🎉 Thank You for Your Purchase!</h1>
+  <p>Your order is confirmed. We will deliver soon!</p>
+
+  <a href="{% url 'profile' %}">View Orders</a> |
+  <a href="{% url 'petstore' %}">Continue Shopping</a>
+
+</section>
+
+</body>
+</html>

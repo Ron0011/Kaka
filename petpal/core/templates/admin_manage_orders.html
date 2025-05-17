@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Orders | PetPal Admin</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/admin.css' %}">
+</head>
+<body>
+
+<section class="admin-section">
+  <h1>Admin Manage Orders</h1>
+
+  {% if orders %}
+    <table style="width:100%; text-align:center;">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>User</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Customer</th>
+          <th>Status</th>
+          <th>Change Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+        <tr>
+          <td>{{ order.id }}</td>
+          <td>{{ order.user.username }}</td>
+          <td>{{ order.product_name }}</td>
+          <td>{{ order.quantity }}</td>
+          <td>{{ order.customer_name }}</td>
+          <td>{{ order.status }}</td>
+          <td>
+            <form method="POST" action="{% url 'admin_manage_orders' %}">
+              {% csrf_token %}
+              <input type="hidden" name="order_id" value="{{ order.id }}">
+              <select name="status" required>
+                <option value="">--Select--</option>
+                <option value="Paid">Paid</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Delivered">Delivered</option>
+              </select>
+              <button type="submit">Update</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No orders available.</p>
+  {% endif %}
+
+</section>
+
+</body>
+</html>

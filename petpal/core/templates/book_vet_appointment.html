@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Vet Appointment | PetPal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/vet.css' %}">
+</head>
+<body>
+
+<header>
+    <h1 class="logo">PETPAL</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'adopt' %}">Adopt</a></li>
+            <li><a href="{% url 'petstore' %}">Pet Store</a></li>
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section>
+    <h2>Book Appointment with {{ hospital.name }}</h2>
+    <form action="{% url 'book_vet_appointment' hospital.id %}" method="POST">
+        {% csrf_token %}
+        <select name="pet" required>
+            {% for pet in pets %}
+                <option value="{{ pet.id }}">{{ pet.name }}</option>
+            {% endfor %}
+        </select>
+        <input type="date" name="date" required>
+        <input type="time" name="time" required>
+        <textarea name="reason" placeholder="Reason for visit" required></textarea>
+        <button type="submit">Book Appointment</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2025 PetPal. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

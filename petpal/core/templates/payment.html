@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PetPal Payment</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/petstore.css' %}">
+</head>
+<body>
+
+<section class="payment-section">
+    <h1>Complete Your Payment ₹{{ total_price }}</h1>
+
+    <form action="{% url 'payment_success' %}" method="POST">
+        {% csrf_token %}
+        <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="{{ key_id }}"
+            data-amount="{{ payment.amount }}"
+            data-currency="INR"
+            data-order_id="{{ payment.id }}"
+            data-buttontext="Pay Now"
+            data-name="PetPal Store"
+            data-description="Pet products purchase"
+            data-theme.color="#ff6347">
+        </script>
+    </form>
+
+</section>
+
+</body>
+</html>

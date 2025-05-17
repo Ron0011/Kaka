@@ -1,0 +1,91 @@
+/* profile.css */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f4f4;
+  }
+  
+  header {
+    background:cadetblue;
+    color:whitesmoke;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
+  header nav a:hover {
+    text-decoration: underline;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .profile-section {
+    background: white;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  h2 {
+    color: #363635;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    color: #555;
+  }
+  
+  .status {
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  
+  .status.confirmed {
+    color: green;
+  }
+  
+  .status.cancelled {
+    color: red;
+  }
+  
+  .status.pending {
+    color: orange;
+  }
+  
+  .cancel-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .cancel-btn:hover {
+    background: darkred;
+  }
+  
+  footer {
+    background: #363635;
+    text-align: center;
+    padding: 20px;
+    color: #ccc;
+    margin-top: 50px;
+  }
+  

@@ -44,11 +44,6 @@ PetPal enables users to:
 - Place secure orders (Cash on Delivery / UPI)  
 - Track past orders  
 
-### 💬 Community Module  
-- Share posts, tips, and stories  
-- Comment and engage with other users  
-- List and join pet-related events  
-
 ### 🔔 Notifications & Messaging  
 - Get alerts for adoption, bookings, and orders  
 - Integrated free APIs for messaging/email  

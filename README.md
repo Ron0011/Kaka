@@ -133,4 +133,4 @@ PetPal/
 
 👨‍💻 Author
 
-Your Name – MSc Information Technology Student, Annamalai University
+Raghul K – MSc Information Technology Student, Annamalai University

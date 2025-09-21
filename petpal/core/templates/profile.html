@@ -17,7 +17,6 @@
 </header>
 
 <main>
-  <!-- Notifications -->
   <section class="profile-section">
     <h2>Notifications</h2>
     {% if notifications %}
@@ -31,7 +30,6 @@
     {% endif %}
   </section>
 
-  <!-- Pets Added -->
   <section class="profile-section">
     <h2>Pets You Added</h2>
     {% if pets_added %}
@@ -45,7 +43,6 @@
     {% endif %}
   </section>
 
-  <!-- Adoptions -->
   <section class="profile-section">
     <h2>Pets You Adopted</h2>
     {% if adoptions %}
@@ -59,20 +56,18 @@
     {% endif %}
   </section>
 
-  <!-- Vet Appointments -->
   <section class="profile-section">
     <h2>Vet Appointments</h2>
     {% if vet_bookings %}
       <ul>
         {% for booking in vet_bookings %}
           <li>
-            🏥 {{ booking.pet.name }} - {{ booking.hospital.name }} on {{ booking.date|date:"d M Y" }} at {{ booking.time|time:"H:i" }}
+             {{ booking.pet.name }} - {{ booking.hospital.name }} on {{ booking.date|date:"d M Y" }} at {{ booking.time|time:"H:i" }}
             <span class="status 
               {% if booking.status == 'Confirmed' %} confirmed
               {% elif booking.status == 'Cancelled' %} cancelled
               {% else %} pending
-              {% endif %}
-            ">
+              {% endif %} ">
               ({{ booking.status }})
             </span>
 
@@ -90,7 +85,6 @@
     {% endif %}
   </section>
 
-  <!-- Orders -->
   <section class="profile-section">
     <h2>Pet Store Orders</h2>
     {% if Orders %}

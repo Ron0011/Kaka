@@ -1,5 +1,3 @@
-/* adopt.css */
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -8,7 +6,6 @@ body {
     color: #333;
 }
 
-/* Header */
 header {
     background-color: cadetblue ;
     color:aliceblue;
@@ -43,7 +40,6 @@ nav a:hover {
     background: #ff4500;
 }
 
-/* Section for Pet Categories */
 .adopt-section {
     background: #fff;
     padding: 20px;
@@ -74,7 +70,6 @@ nav a:hover {
     background-color: #ff6347;
 }
 
-/* Available Pets Section */
 section h1, section h2 {
     text-align: center;
     margin-top: 40px;
@@ -132,7 +127,6 @@ section > div > div button:hover {
     background-color: #ff4500;
 }
 
-/* Form to Add Pets */
 form {
     max-width: 500px;
     margin: 30px auto;
@@ -167,7 +161,6 @@ form button:hover {
     background-color: #ff6347;
 }
 
-/* Footer */
 footer {
     background-color: #363635;
     color: white;
@@ -197,7 +190,7 @@ footer a:hover {
     margin-right: 10px;
 }
 
-footer > p {
+footer  p {
     grid-column: 1/-1;
     text-align: center;
     margin-top: 20px;

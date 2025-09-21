@@ -2,8 +2,6 @@ from django.contrib import admin
 from .models import UserProfile, Pet, Adoption, Notification, VeterinaryHospital, VetBooking, Product, Order
 
 
-# ---------------------- Admin Models ----------------------
-
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'phone_number', 'created_at')

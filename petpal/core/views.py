@@ -9,13 +9,8 @@ from .forms import OrderForm
 import razorpay
 from django.conf import settings
 
-
-# ---------------------- Home ----------------------
-
 def home(request):
     return render(request, 'home.html')
-
-# ---------------------- User Authentication ----------------------
 
 def register(request):
     if request.method == 'POST':
@@ -46,8 +41,6 @@ def user_logout(request):
     messages.success(request, "Logged out successfully!")
     return redirect('home')
 
-# ---------------------- Profile ----------------------
-
 @login_required
 def profile(request):
     pets_added = Pet.objects.filter(user=request.user)
@@ -64,8 +57,6 @@ def profile(request):
         'notifications': notifications,
     }
     return render(request, 'profile.html', context)
-
-# ---------------------- Adopt Pet ----------------------
 
 @login_required
 def adopt(request):
@@ -105,7 +96,6 @@ def adopt_pet(request, pet_id):
 def delete_pet(request, pet_id):
     pet = get_object_or_404(Pet, id=pet_id)
 
-    # Only allow if the logged-in user is the owner
     if pet.user == request.user:
         pet.delete()
         messages.success(request, "Pet removed successfully!")
@@ -114,8 +104,6 @@ def delete_pet(request, pet_id):
 
     return redirect('adopt')
 
-
-# ---------------------- Vet Booking ----------------------
 
 @login_required
 def veterinary_hospital_view(request):
@@ -143,7 +131,7 @@ def book_vet_appointment(request, hospital_id):
             reason=reason
         )
         messages.success(request, "Vet appointment booked successfully!")
-        return redirect('home')  # Redirect to profile or some confirmation page
+        return redirect('home') 
 
     return render(request, 'book_vet_appointment.html', {'hospital': hospital, 'pets': pets})
 
@@ -169,7 +157,6 @@ def manage_vet_bookings(request):
 
     return render(request, 'manage_vet_bookings.html', {'bookings': bookings})
 
-# ---------------------- Pet Store ----------------------
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Order
 from django.contrib.auth.decorators import login_required
@@ -201,8 +188,6 @@ def place_order(request, product_name):
 
     return render(request, 'place_order.html', {'product': product})
 
-
-# Add to Cart
 @login_required
 def add_to_cart(request, product_name):
     cart = request.session.get('cart', {})
@@ -216,7 +201,6 @@ def add_to_cart(request, product_name):
     messages.success(request, f"{product_name} added to cart.")
     return redirect('petstore')
 
-# Checkout Cart
 @login_required
 def checkout(request):
     cart = request.session.get('cart', {})
@@ -252,7 +236,7 @@ def view_cart(request):
     total_price = 0
 
     for product_name, quantity in cart.items():
-        price = get_product_price(product_name)  # Call helper function
+        price = get_product_price(product_name)
         item_total = price * quantity
         cart_items.append({
             'product_name': product_name,
@@ -276,7 +260,7 @@ def get_product_price(product_name):
         'Drools Adult Chicken & Egg Dog Food': 12.99,
         'Jainsons Pet Products Combo Toy': 14.99,
     }
-    return prices.get(product_name, 10.00)  # default price if missing
+    return prices.get(product_name, 10.00)  
 
 @login_required
 def remove_from_cart(request, product_name):
@@ -323,7 +307,6 @@ def payment_success(request):
 
     return redirect('petstore')
 
-# ---------------------- Admin ----------------------
 
 def is_admin(user):
     return user.is_staff

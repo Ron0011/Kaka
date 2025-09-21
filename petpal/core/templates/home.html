@@ -36,7 +36,6 @@
   </a>
       {% if user.is_authenticated %}
       <li style="display: flex; align-items: center; gap: 10px;">
-        <!-- Logout Button -->
         <a href="{% url 'logout' %}" class="btn" style="background-color:rgb(7, 74, 76);">Logout</a>
       </li>
       {% else %}
@@ -54,7 +53,6 @@
                     We bring everything together in one place for you.</p>
             </div>
         </section>
-        <!-- Success Message with Close Button -->
 {% if messages %}
 <div style="position: relative; 
             margin: 20px auto; 

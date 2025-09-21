@@ -124,7 +124,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'core/static'),  # Adjust based on your folder structure
+    os.path.join(BASE_DIR, 'core/static'),  
 ]
 
 # Default primary key field type
@@ -138,6 +138,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 LOGIN_URL = '/login/'
 
 
-# Razorpay Free Test Mode Settings
 RAZORPAY_KEY_ID = 'your_test_key_id_here'
 RAZORPAY_KEY_SECRET = 'your_test_key_secret_here'

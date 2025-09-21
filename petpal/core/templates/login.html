@@ -13,7 +13,6 @@
 <div class="login-container">
   <h2>Login to PetPal</h2>
 
-  <!-- Success/Error Messages -->
   {% if messages %}
     {% for message in messages %}
       <div class="{% if message.tags == 'success' %}success-message{% elif message.tags == 'error' %}error-message{% endif %}">
@@ -22,7 +21,6 @@
     {% endfor %}
   {% endif %}
 
-  <!-- Login Form -->
   <form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
     <div class="form-group">
@@ -35,7 +33,6 @@
       <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
     </div>
 
-    <!-- Show Password Checkbox -->
     <div class="form-group" style="margin-top:10px;">
       <input type="checkbox" onclick="password.type = password.type === 'password' ? 'text' : 'password'">
       <label>Show Password</label>
@@ -47,7 +44,6 @@
   <p class="signup-text">Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
 </div>
 
-<!-- Footer -->
 <footer>
   <p>&copy; 2025 PetPal. All rights reserved.</p>
 </footer>
